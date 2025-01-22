@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OfficerSeeder::class
         ]);
+
+        $this->call([
+            IncentiveSettingsSeeder::class
+        ]);
     }
 }

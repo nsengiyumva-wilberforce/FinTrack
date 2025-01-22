@@ -54,7 +54,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
         $file = public_path('uploads/' . $this->file_name);
         //iif the file does not exist, return an error
         if (!file_exists($file)) {
-           //prnt an error in the cmd
+            //prnt an error in the cmd
             Log::error('File does not exist');
             //return an error
             return response()->json(['error' => 'File does not exist'], 404);
@@ -106,6 +106,13 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                 // Extracting region_id from $csv[$i][0]
                 $regionData = explode('-', $csv[$i][0]);
                 $region_id = blank($regionData[0]) ? 3 : $regionData[0];
+                $region_name = count($regionData) > 1 ? $regionData[1] : "Unknown";
+
+                // Check if the region exists, if not create it
+                $region = \App\Models\Region::firstOrCreate(
+                    ['region_id' => $region_id],
+                    ['region_name' => $region_name]
+                );
 
                 // Extracting product_id from $csv[$i][1]
                 $branchData = explode('-', $csv[$i][1]);
@@ -115,7 +122,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                     $branch = new Branch();
                     $branch->branch_id = $branch_id;
                     $branch->branch_name = $branchData[1];
-                    $branch->region_id = $region_id;
+                    $branch->region_id = $region->region_id;
                     $branch->save();
 
                     $branch_id = $branch->branch_id;
@@ -135,7 +142,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                         $found->names = $full_name;
                         $found->user_type = 1;
                         $found->username = $staff_id;
-                        $found->region_id = $region_id;
+                        $found->region_id = $region->region_id;
                         $found->branch_id = $branch_id;
                         $found->password = $password;
                         $found->un_hashed_password = $staff_id;
@@ -151,7 +158,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                     $staff->names = $full_name;
                     $staff->user_type = 1;
                     $staff->username = $staff_id;
-                    $staff->region_id = $region_id;
+                    $staff->region_id = $region->region_id;
                     $staff->branch_id = $branch_id;
                     $staff->password = $password;
                     $staff->un_hashed_password = $staff_id;
@@ -175,7 +182,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                     ['district_id' => $district_id],
                     [
                         'district_name' => "Unknown",
-                        'region_id' => $region_id,
+                        'region_id' => $region->region_id,
                     ]
                 );
 
@@ -229,7 +236,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                 $sale->product_id = $product_id;
                 $sale->disbursement_date = $csv[$i][30];
                 $sale->disbursement_amount = $csv[$i][27];
-                $sale->region_id = $region_id;
+                $sale->region_id = $region->region_id;
                 $sale->branch_id = $branch_id;
                 $sale->gender = $csv[$i][19];
                 $sale->number_of_children = $csv[$i][45];
@@ -241,7 +248,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                 $arrear = new Arrear();
                 $arrear->staff_id = $staff_id;
                 $arrear->branch_id = $branch_id;
-                $arrear->region_id = $region_id;
+                $arrear->region_id = $region->region_id;
                 $arrear->product_id = $product_id;
                 $arrear->district_id = $district_id;
                 $arrear->subcounty_id = $subcounty_id;
@@ -277,7 +284,7 @@ class ImportSalesAndArrearsJob implements ShouldQueue
                     $previous_end_month = new PreviousEndMonth();
                     $previous_end_month->staff_id = $staff_id;
                     $previous_end_month->branch_id = $branch_id;
-                    $previous_end_month->region_id = $region_id;
+                    $previous_end_month->region_id = $region->region_id;
                     $previous_end_month->product_id = $product_id;
                     $previous_end_month->district_id = $district_id;
                     $previous_end_month->subcounty_id = $subcounty_id;

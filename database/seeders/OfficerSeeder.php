@@ -57,11 +57,11 @@ class OfficerSeeder extends Seeder
 
         $officer = Officer::create([
             'staff_id' => 1,
-            'names' => 'VFU Admin',
+            'names' => 'FinTrack Admin',
             'user_type' => 5,
-            'username' => 'admin@vfu.com',
-            'password' => Hash::make('vfu@2024'),
-            'un_hashed_password' => 'vfu@2024',
+            'username' => 'admin@fintrack.com',
+            'password' => Hash::make('BLr11eatN'),
+            'un_hashed_password' => 'BLr11eatN',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
