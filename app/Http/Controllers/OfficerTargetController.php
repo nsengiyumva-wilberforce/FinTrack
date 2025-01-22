@@ -43,10 +43,6 @@ class OfficerTargetController extends Controller
 
     public function import(Request $request)
     {
-        // validate
-        $this->validate($request, [
-            'officer_targets_file' => 'required|mimes:csv'
-        ]);
         //save the file to the server
         $file = $request->file('officer_targets_file');
         $file_name = time() . '_' . $file->getClientOriginalName();
