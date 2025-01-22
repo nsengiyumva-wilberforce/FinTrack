@@ -1,0 +1,135 @@
+    .spinner-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 9999;
+    }
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    .dt-button.export-button {
+        border: none;
+        background-color: transparent;
+        color: inherit;
+        text-decoration: underline;
+        padding: 0;
+        margin-right: 5px;
+        /* Add spacing between buttons */
+    }
+
+
+    /* Define media query for medium and large screens */
+    @media screen and (min-width: 768px) {
+
+        /* Adjust left margin for medium screens */
+        .custom-navbar {
+            margin-left: 16%;
+            /* Adjust as needed */
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+
+        /* Adjust left margin for large screens */
+        .custom-navbar {
+            margin-left: 16%;
+            /* Adjust as needed */
+        }
+    }
+
+    .export-button {
+        color: white;
+    }
+
+
+    /* set inactive tab text to orange */
+    .nav-tabs .nav-link,
+    .custom-navbar .nav-item .nav-link {
+        color: orange;
+        font-weight: bold;
+    }
+
+    .nav-tabs .nav-link:hover,
+    .custom-navbar .nav-item .nav-link:hover {
+        color: orange;
+        font-weight: lighter;
+
+    }
+
+    .table-responsive .incentives-table {
+        overflow-x: auto;
+    }
+
+    /* .dataTables_wrapper {
+        width: 100%;
+        overflow-x: auto;
+    } */
+
+    .card-header {
+        background-color: orange !important;
+    }
+
+    .btn-warning {
+        background-color: orange !important;
+        border-color: orange !important;
+        color: white !important;
+    }
+
+    .btn-outline-warning {
+        color: orange !important;
+        border-color: orange !important;
+    }
+
+    /* Hide scrollbar for all elements */
+    body,
+    html {
+        overflow-y: hidden;
+        /* Hide vertical scrollbar */
+    }
+
+    .form-control:focus {
+        border-color: orange !important;
+      }
+
+      .dt-center{
+        text-align: center;
+      }
+
+      .progress-bar-custom {
+        height: 40px; /* Adjust height here */
+        line-height: 40px; /* Match line-height with height */
+        font-size: .9rem; /* Adjust font size if needed */
+        color: #fff; /* Text color */
+        text-align: center;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .targets-div .bg-gradient-warning {
+        background: linear-gradient(135deg, #25972e 0%, #8bc34a 100%);
+      }
+      .targets-div .bg-gradient-info {
+        background: linear-gradient(135deg, #17a2b8 0%, #0d6efd 100%);
+      }
