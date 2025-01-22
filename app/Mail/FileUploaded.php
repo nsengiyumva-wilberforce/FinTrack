@@ -28,7 +28,7 @@ class FileUploaded extends Mailable
     {
         $today = now()->format('Y-m-d');
         return new Envelope(
-            subject: 'VFU CRM - File Uploaded successfuly on today'.$today
+            subject: 'FinTrack - File Uploaded successfuly on today'.$today
         );
     }
 
