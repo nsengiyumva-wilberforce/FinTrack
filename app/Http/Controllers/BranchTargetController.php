@@ -86,7 +86,15 @@ class BranchTargetController extends Controller
      */
     public function downloadTemplate()
     {
-        $file = public_path('assets\templates\branch_targets_template.csv');
+        // Use forward slashes for compatibility across platforms
+        $file = public_path('assets/templates/branch_targets_template.csv');
+
+        // Check if the file exists before attempting to download
+        if (!file_exists($file)) {
+            abort(404, "The requested file does not exist.");
+        }
+
         return response()->download($file);
     }
+
 }
