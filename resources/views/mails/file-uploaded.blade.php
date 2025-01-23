@@ -19,7 +19,7 @@
         <p>Users should be able to access updated data.</p><br>
 
         <p>Best Regards,
-        <p>
+
         <p>FinTrack Team</p>
     </div>
 </body>

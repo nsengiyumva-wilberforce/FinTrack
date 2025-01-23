@@ -255,7 +255,7 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-sm-6 mt-4 targets-div">
+        {{-- <div class="col-xl-3 col-sm-6 mt-4 targets-div">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -280,10 +280,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
-        <div class="col-xl-3 col-sm-6 mt-4 targets-div">
+        {{-- <div class="col-xl-3 col-sm-6 mt-4 targets-div">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -308,7 +308,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="row">
